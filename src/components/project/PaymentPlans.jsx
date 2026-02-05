@@ -35,21 +35,21 @@ export default function PaymentPlans({ plans = [] }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100"
+      className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
     >
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center">
-          <CreditCard className="w-6 h-6 text-teal-600" />
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center">
+          <CreditCard className="w-5 h-5 text-teal-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Payment Plans</h2>
+          <h2 className="text-xl font-bold text-gray-900">Payment Plans</h2>
           <p className="text-gray-500 text-sm">Flexible payment options available</p>
         </div>
       </div>
 
       {/* Plan Tabs */}
       {displayPlans.length > 1 && (
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
           {displayPlans.map((plan, idx) => (
             <button
               key={idx}
@@ -94,7 +94,7 @@ export default function PaymentPlans({ plans = [] }) {
         </div>
 
         {/* Breakdown Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 pt-16">
           {currentPlan?.breakdowns?.map((breakdown, idx) => (
             <motion.div
               key={idx}
@@ -112,11 +112,11 @@ export default function PaymentPlans({ plans = [] }) {
                 'bg-emerald-300'
               } shadow-sm`} />
 
-              <div className="bg-gray-50 rounded-2xl p-5 text-center hover:bg-gray-100 transition-colors">
-                <p className="text-3xl font-bold text-gray-900 mb-1">
+              <div className="bg-gray-50 rounded-xl p-4 text-center hover:bg-gray-100 transition-colors">
+                <p className="text-2xl font-bold text-gray-900 mb-1">
                   {breakdown.percentage}%
                 </p>
-                <p className="text-sm font-medium text-gray-700 mb-2">
+                <p className="text-xs font-medium text-gray-700 mb-1">
                   {breakdown.milestone}
                 </p>
                 <p className="text-xs text-gray-500">
@@ -129,7 +129,7 @@ export default function PaymentPlans({ plans = [] }) {
       </div>
 
       {/* Summary */}
-      <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between">
+      <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
         <div className="flex items-center gap-2 text-gray-500 text-sm">
           <Check className="w-4 h-4 text-teal-600" />
           <span>No hidden charges</span>

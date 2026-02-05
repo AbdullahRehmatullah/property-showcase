@@ -129,7 +129,7 @@ The development offers a stunning collection of studios, 1, 2, and 3-bedroom apa
       </motion.div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Image Gallery */}
         <ImageGallery images={project.images} />
 
@@ -137,9 +137,9 @@ The development offers a stunning collection of studios, 1, 2, and 3-bedroom apa
         <ProjectHeader project={project} />
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           {/* Main Content - 2 columns */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6">
             <ProjectDescription 
               description={project.description} 
               developerName={project.developer_name}
@@ -150,33 +150,8 @@ The development offers a stunning collection of studios, 1, 2, and 3-bedroom apa
           </div>
 
           {/* Sidebar - 1 column */}
-          <div className="space-y-8">
+          <div>
             <DocumentsList documents={project.documents} />
-
-            {/* Quick Contact Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 text-white sticky top-24"
-            >
-              <h3 className="text-xl font-bold mb-2">Interested in this project?</h3>
-              <p className="text-gray-300 text-sm mb-6">
-                Get in touch with our team for more information and exclusive offers.
-              </p>
-              
-              <div className="space-y-3">
-                <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white rounded-full h-12">
-                  Request Callback
-                </Button>
-                <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 rounded-full h-12">
-                  Schedule Viewing
-                </Button>
-              </div>
-
-              <p className="text-xs text-gray-400 mt-6 text-center">
-                Response within 24 hours
-              </p>
-            </motion.div>
           </div>
         </div>
       </div>

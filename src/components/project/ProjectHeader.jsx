@@ -43,7 +43,7 @@ export default function ProjectHeader({ project }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
-      className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 py-8"
+      className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 py-6"
     >
       <div className="space-y-4">
         {/* Status Badge */}
@@ -79,7 +79,7 @@ export default function ProjectHeader({ project }) {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
-        className="bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl p-6 text-white shadow-xl shadow-teal-600/20"
+        className="bg-gradient-to-br from-teal-600 to-teal-700 rounded-xl p-5 text-white shadow-lg shadow-teal-600/20"
       >
         <p className="text-teal-100 text-sm font-medium mb-1">Starting from</p>
         <p className="text-3xl lg:text-4xl font-bold tracking-tight">

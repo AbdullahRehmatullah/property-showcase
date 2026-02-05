@@ -18,26 +18,26 @@ export default function DocumentsList({ documents = [] }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100"
+      className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center">
-          <Folder className="w-6 h-6 text-amber-600" />
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center">
+          <Folder className="w-5 h-5 text-amber-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Documents</h2>
+          <h2 className="text-xl font-bold text-gray-900">Documents</h2>
           <p className="text-gray-500 text-sm">{displayDocuments.length} files available</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="space-y-2">
         {displayDocuments.map((doc, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: idx * 0.1 }}
-            className="group flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50 transition-all duration-300"
+            className="group flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50 transition-all duration-300"
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">

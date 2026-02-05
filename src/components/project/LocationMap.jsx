@@ -26,15 +26,15 @@ export default function LocationMap({ project }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100"
+      className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
     >
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-rose-50 rounded-2xl flex items-center justify-center">
-            <MapPin className="w-6 h-6 text-rose-600" />
+          <div className="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center">
+            <MapPin className="w-5 h-5 text-rose-600" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Location</h2>
+            <h2 className="text-xl font-bold text-gray-900">Location</h2>
             <p className="text-gray-500 text-sm">
               {locationParts.length > 0 ? locationParts.join(', ') : 'Dubai, UAE'}
             </p>
@@ -53,7 +53,7 @@ export default function LocationMap({ project }) {
 
       {/* Location Details */}
       {locationParts.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.area && (
             <span className="px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700">
               {project.area}
@@ -73,7 +73,7 @@ export default function LocationMap({ project }) {
       )}
 
       {/* Map */}
-      <div className="rounded-2xl overflow-hidden h-[400px] border border-gray-100">
+      <div className="rounded-xl overflow-hidden h-[350px] border border-gray-100">
         <MapContainer
           center={[lat, lng]}
           zoom={14}

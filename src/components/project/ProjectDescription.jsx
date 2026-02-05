@@ -23,14 +23,14 @@ Every aspect of this community has been thoughtfully planned to provide the ulti
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100"
+      className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-          <Info className="w-6 h-6 text-blue-600" />
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
+          <Info className="w-5 h-5 text-blue-600" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">About This Project</h2>
+          <h2 className="text-xl font-bold text-gray-900">About This Project</h2>
           {developerName && (
             <p className="text-gray-500 text-sm flex items-center gap-1">
               <Building2 className="w-3 h-3" /> by {developerName}
