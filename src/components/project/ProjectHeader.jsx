@@ -59,7 +59,7 @@ export default function ProjectHeader({ project }) {
 
         {/* Location */}
         <div className="flex items-center gap-2 text-gray-600">
-          <MapPin className="w-5 h-5 text-teal-600" />
+          <MapPin className="w-5 h-5 text-blue-600" />
           <span className="text-lg">
             {locationParts.length > 0 ? locationParts.join(' • ') : 'Location not specified'}
           </span>
@@ -79,13 +79,13 @@ export default function ProjectHeader({ project }) {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
-        className="bg-gradient-to-br from-teal-600 to-teal-700 rounded-xl p-5 text-white shadow-lg shadow-teal-600/20"
+        className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-5 text-white shadow-lg shadow-blue-600/20"
       >
-        <p className="text-teal-100 text-sm font-medium mb-1">Starting from</p>
+        <p className="text-blue-100 text-sm font-medium mb-1">Starting from</p>
         <p className="text-3xl lg:text-4xl font-bold tracking-tight">
           {formatPrice(project.starting_price)}
         </p>
-        <p className="text-teal-100 text-sm mt-2">*Price subject to change</p>
+        <p className="text-blue-100 text-sm mt-2">*Price subject to change</p>
       </motion.div>
     </motion.div>
   );

@@ -60,7 +60,7 @@ export default function LocationMap({ project }) {
             </span>
           )}
           {project.community && (
-            <span className="px-3 py-1.5 bg-teal-50 rounded-full text-sm font-medium text-teal-700">
+            <span className="px-3 py-1.5 bg-blue-50 rounded-full text-sm font-medium text-blue-700">
               {project.community}
             </span>
           )}

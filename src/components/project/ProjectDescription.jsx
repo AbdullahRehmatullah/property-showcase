@@ -48,7 +48,7 @@ Every aspect of this community has been thoughtfully planned to provide the ulti
       {shouldTruncate && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-4 flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium text-sm transition-colors"
+          className="mt-4 flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
         >
           {isExpanded ? (
             <>
