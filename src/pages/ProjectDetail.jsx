@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Share2, Heart, Printer, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
