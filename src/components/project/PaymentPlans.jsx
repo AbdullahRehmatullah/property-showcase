@@ -5,30 +5,28 @@ import { CreditCard, Check } from 'lucide-react';
 export default function PaymentPlans({ plans = [] }) {
   const [activePlan, setActivePlan] = useState(0);
 
+  // Parse if plans is a JSON string
+  let parsedPlans = plans;
+  if (typeof plans === 'string') {
+    try {
+      parsedPlans = JSON.parse(plans);
+    } catch (e) {
+      parsedPlans = [];
+    }
+  }
+
   const defaultPlans = [
     {
       name: 'Standard Plan',
-      breakdowns: [
-        { percentage: 10, milestone: 'Down Payment', date: 'On Booking' },
-        { percentage: 10, milestone: 'During Construction', date: 'Within 30 days' },
-        { percentage: 15, milestone: 'Construction Progress', date: 'Jan 2025 - Jun 2025' },
-        { percentage: 25, milestone: 'On Completion', date: 'Jul 2025' },
-        { percentage: 40, milestone: 'Post Handover', date: '1% per month' }
-      ]
-    },
-    {
-      name: 'Extended Plan',
-      breakdowns: [
-        { percentage: 5, milestone: 'Down Payment', date: 'On Booking' },
-        { percentage: 5, milestone: 'Within 30 Days', date: 'After booking' },
-        { percentage: 10, milestone: 'During Construction', date: 'Monthly installments' },
-        { percentage: 30, milestone: 'On Completion', date: 'At handover' },
-        { percentage: 50, milestone: 'Post Handover', date: '60 months' }
+      items: [
+        { name: '10%', description: 'Down Payment' },
+        { name: '0.5% monthly', description: 'During Construction' },
+        { name: 'Remaining', description: 'On Handover' }
       ]
     }
   ];
 
-  const displayPlans = plans.length > 0 ? plans : defaultPlans;
+  const displayPlans = parsedPlans?.length > 0 ? parsedPlans : defaultPlans;
   const currentPlan = displayPlans[activePlan];
 
   return (
@@ -66,78 +64,39 @@ export default function PaymentPlans({ plans = [] }) {
         </div>
       )}
 
-      {/* Payment Timeline */}
-      <div className="relative">
-        {/* Progress Bar Background */}
-        <div className="absolute top-8 left-0 right-0 h-2 bg-gray-100 rounded-full" />
-        
-        {/* Progress Segments */}
-        <div className="absolute top-8 left-0 right-0 h-2 rounded-full overflow-hidden flex">
-          {currentPlan?.breakdowns?.map((_, idx) => {
-            const width = currentPlan.breakdowns[idx].percentage;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ width: 0 }}
-                animate={{ width: `${width}%` }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className={`h-full ${
-                  idx === 0 ? 'bg-blue-600' :
-                  idx === 1 ? 'bg-blue-500' :
-                  idx === 2 ? 'bg-blue-400' :
-                  idx === 3 ? 'bg-blue-300' :
-                  'bg-blue-200'
-                }`}
-              />
-            );
-          })}
-        </div>
-
-        {/* Breakdown Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 pt-16">
-          {currentPlan?.breakdowns?.map((breakdown, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className="relative"
-            >
-              {/* Connector Dot */}
-              <div className={`absolute -top-8 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white ${
-                idx === 0 ? 'bg-blue-600' :
-                idx === 1 ? 'bg-blue-500' :
-                idx === 2 ? 'bg-blue-400' :
-                idx === 3 ? 'bg-blue-300' :
-                'bg-blue-200'
-              } shadow-sm`} />
-
-              <div className="bg-gray-50 rounded-xl p-4 text-center hover:bg-gray-100 transition-colors">
-                <p className="text-2xl font-bold text-gray-900 mb-1">
-                  {breakdown.percentage}%
-                </p>
-                <p className="text-xs font-medium text-gray-700 mb-1">
-                  {breakdown.milestone}
-                </p>
-                <p className="text-xs text-gray-500">
-                  {breakdown.date}
-                </p>
+      {/* Payment Items */}
+      <div className="space-y-3">
+        {currentPlan?.items?.map((item, idx) => (
+          <motion.div
+            key={item.id || idx}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: idx * 0.1 }}
+            className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                {idx + 1}
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <div>
+                <p className="font-semibold text-gray-900">{item.name}</p>
+                <p className="text-sm text-gray-500">{item.description}</p>
+              </div>
+            </div>
+            <Check className="w-5 h-5 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
+        ))}
       </div>
 
-      {/* Summary */}
-      <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
-        <div className="flex items-center gap-2 text-gray-500 text-sm">
-          <Check className="w-4 h-4 text-blue-600" />
-          <span>No hidden charges</span>
+      {/* Description */}
+      {currentPlan?.description && (
+        <div className="mt-4 pt-4 border-t border-gray-100">
+          <p className="text-sm text-gray-600 flex items-center gap-2">
+            <Check className="w-4 h-4 text-blue-600" />
+            {currentPlan.description}
+          </p>
         </div>
-        <div className="text-sm text-gray-500">
-          Total: <span className="font-bold text-gray-900">100%</span>
-        </div>
-      </div>
+      )}
     </motion.div>
   );
 }
